@@ -12,7 +12,7 @@ const Header = () => {
             source={require('../../assets/images/logo-txt.png')}
             className="w-32 h-10"
         />
-        <View className='flex-row items-center'>
+        <View className='flex-row items-center gap-4'>
             <TouchableOpacity>
                 <Iconx src={addIcon} />
             </TouchableOpacity> 

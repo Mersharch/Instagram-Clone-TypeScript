@@ -1,15 +1,15 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 interface Props {
   img: string,
   name: string,
-  key:number
+  id:number
 }
 
-const StoryCard = ({img, name, key}: Props) => {
+const StoryCard = ({img, name, id}: Props) => {
   return (
-    <TouchableOpacity key={key} className='flex-col items-center w-min h-min mx-2 gap-2'>
+    <TouchableOpacity key={id} className='flex-col items-center w-min h-min mx-2 gap-2'>
       <Image 
         source={img}
         style={styles.img}

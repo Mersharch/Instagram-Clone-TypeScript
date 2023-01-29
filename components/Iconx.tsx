@@ -7,7 +7,7 @@ interface Props {
 
 const Iconx = ({src} : Props) => {
   return (
-    <View className='mx-3'>
+    <View>
         <Image 
             source={src} 
             className='w-8 h-7'
