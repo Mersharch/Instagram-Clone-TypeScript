@@ -3,7 +3,25 @@ import React from 'react'
 import Iconx from '../Iconx'
 // import { PostType } from '../../types'
 
-const Post = ({post}:any) => {
+
+
+interface Props {
+    post : {
+        id: number;
+        pp:string;
+        name:string;
+        img:string;
+        likes?:number;
+        caption?:string;
+        comments?:  {
+            comment:string;
+            user:string
+        }[];
+        loc?:string;
+    }
+}
+
+const Post = ({post}:Props) => {
   return (
     <View className='mt-6'>
         <PostHeader pp={post.pp} name={post.name} loc={post.loc ? post.loc : ''} />
@@ -40,7 +58,7 @@ const PostHeader = ({pp, name, loc}:{name:string; pp:string; loc?:string}) => {
         </View>
     )
 }
-const PostFooter = ({post}:any) => {
+const PostFooter = ({post}:Props) => {
     return (
         <View className=''>
 
@@ -79,12 +97,11 @@ const PostFooter = ({post}:any) => {
                 <Text className='text-slate-200'>{post.caption}</Text>
             </View>
             <View>
-                {/* {post.comments.map((comment:any) => { */}
                     {/* return ( */}
-                        {!!post.comments.length && <Text className='text-slate-500'>
-                             {post.comments.length > 1 ? `View all ${post.comments.length} comments` : `View ${post.comments.length} comment`}
+                        {!!post.comments?.length && <Text className='text-slate-500'>
+                             {post.comments?.length > 1 ? `View all ${post.comments.length} comments` : `View ${post.comments.length} comment`}
                         </Text>}
-                        {post.comments.length != 0 && <View className='flex-row gap-2'>
+                        {post.comments?.length != 0 && <View className='flex-row gap-2'>
                             <Text className='text-white'>{post.comments[0].user}</Text>
                             <Text className='text-white'>{post.comments[0].comment}</Text>
                         </View>}

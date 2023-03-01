@@ -8,6 +8,7 @@ import ReelsScreen from './screens/ReelsScreen';
 import ShopScreen from './screens/ShopScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import { Image } from "react-native";
+import SignIn from './screens/SignIn';
 
 
 
@@ -19,7 +20,27 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <HomeStack />
+    </NavigationContainer>
+    
+    
+  );
+}
+
+
+
+const HomeStack = () => {
+  return (
+    <Stack.Navigator initialRouteName='SignIn' screenOptions={{headerShown:false}}>
+      <Stack.Screen name='SignIn' component={SignIn} />
+      <Stack.Screen name="Home" component={TabNav} />
+    </Stack.Navigator>
+  )
+}
+
+const TabNav = () => {
+  return(
+    <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused }) => {
             let src:string = '';
@@ -59,25 +80,12 @@ export default function App() {
           headerShown: false
         })}
       >
-        <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Explore" component={ExploreScreen} />
         <Tab.Screen name="Reels" component={ReelsScreen} />
         <Tab.Screen name="Shop" component={ShopScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
-    </NavigationContainer>
-    
-    
-  );
-}
-
-
-
-const HomeStack = () => {
-  return (
-    <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown:false}}>
-      <Stack.Screen name="Home" component={HomeScreen} />
-    </Stack.Navigator>
   )
 }
 
